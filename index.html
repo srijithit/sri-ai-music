@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRI AI Music - Every Language. Every Emotion. One Sound.</title>
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. SPLASH SCREEN OVERLAY -->
+  <div class="splash-overlay" id="splash-screen">
+    <div class="logo-icon" style="transform: scale(1.5); margin-bottom: 20px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 12V18M8 8V20M12 4V22M16 6V18M20 10V14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1 style="font-size: 28px; font-weight: 800; letter-spacing: 2px; margin-bottom: 12px; text-transform: uppercase;">SRI AI MUSIC</h1>
+    <p style="color: var(--text-secondary); font-size: 13px; letter-spacing: 1px; margin-bottom: 24px;">Every Language. Every Emotion. One Sound.</p>
+    <div class="splash-loader-bar">
+      <div class="splash-loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- APPLICATION OUTER LAYER -->
+  <div class="app-container" id="app-shell">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12V18M8 8V20M12 4V22M16 6V18M20 10V14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">SRI AI</span>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-item active" data-target="screen-home" id="nav-home">
+          <i class="fa-solid fa-house"></i> <span>Home</span>
+        </div>
+        <div class="nav-item" data-target="screen-search" id="nav-search">
+          <i class="fa-solid fa-magnifying-glass"></i> <span>Search</span>
+        </div>
+        <div class="nav-item" data-target="screen-discover" id="nav-discover">
+          <i class="fa-solid fa-compass"></i> <span>Discover</span>
+        </div>
+        <div class="nav-item" data-target="screen-playlist" id="nav-playlist">
+          <i class="fa-solid fa-music"></i> <span>Playlists</span>
+        </div>
+      </nav>
+
+      <span class="nav-section-title">AI Powered</span>
+      <nav class="nav-menu">
+        <div class="nav-item" data-target="screen-ai-assistant" id="nav-ai-assistant">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> <span>AI Assistant</span>
+        </div>
+        <div class="nav-item" data-target="screen-onboarding" id="nav-onboarding">
+          <i class="fa-solid fa-sliders"></i> <span>AI Personalize</span>
+        </div>
+      </nav>
+
+      <span class="nav-section-title">My Library</span>
+      <nav class="nav-menu">
+        <div class="nav-item" data-target="screen-downloads" id="nav-downloads">
+          <i class="fa-solid fa-circle-arrow-down"></i> <span>Downloads</span>
+        </div>
+        <div class="nav-item" data-target="screen-profile" id="nav-profile">
+          <i class="fa-solid fa-user"></i> <span>Profile</span>
+        </div>
+        <div class="nav-item" data-target="screen-settings" id="nav-settings">
+          <i class="fa-solid fa-gear"></i> <span>Settings</span>
+        </div>
+      </nav>
+
+      <div style="margin-top: auto; padding: var(--space-4) 0 0 0; text-align: center;">
+        <button class="btn-primary" id="sidebar-premium-btn" data-target="screen-premium" style="width: 100%; justify-content: center; margin-bottom: 12px;">
+          <i class="fa-solid fa-crown"></i> Go Ultra
+        </button>
+        <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 4px;">
+          Developed by <a href="https://srijith.vercel.app/" target="_blank" style="color: var(--accent-glow); text-decoration: none; font-weight: 600;">Srijith</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+      
+      <!-- GLOBAL MAIN HEADER -->
+      <header class="main-header">
+        <div class="search-bar-container" id="header-search-container">
+          <button class="search-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input type="text" id="header-search-input" placeholder="Ask AI: 'Play rain music for commute' or Search...">
+          <button class="voice-search-btn" id="voice-search-trigger" title="Voice Search"><i class="fa-solid fa-microphone"></i></button>
+        </div>
+
+        <div class="header-actions">
+          <button class="header-btn" id="header-notification-btn" data-target="screen-notifications" title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <button class="header-btn" id="header-ai-toggle" title="Toggle AI DJ Assistant">
+            <i class="fa-solid fa-face-smile-wink"></i>
+          </button>
+          
+          <!-- User Info Badge -->
+          <div class="profile-badge" id="header-profile-badge" data-target="screen-profile">
+            <img class="profile-avatar" id="header-avatar" src="profile.jpg" alt="User Profile">
+            <span class="profile-name" id="header-username">Srijith</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- STAGE CONTAINER FOR EACH APP VIEW -->
+      <div class="screen-stage">
+
+        <!-- 2. LOGIN SCREEN (Visible first if not guest) -->
+        <div class="app-screen" id="screen-login">
+          <div style="max-width: 460px; margin: var(--space-12) auto; text-align: center;" class="glass-card">
+            <div class="logo-icon" style="margin: 0 auto var(--space-4) auto; transform: scale(1.2);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12V18M8 8V20M12 4V22M16 6V18M20 10V14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h2 style="font-size: 26px; margin-bottom: var(--space-2);">Welcome to SRI AI Music</h2>
+            <p style="color: var(--text-secondary); font-size: 13.5px; margin-bottom: var(--space-8);">India's first luxury AI audio system</p>
+            
+            <div style="display: flex; flex-direction: column; gap: var(--space-3); width: 100%;">
+              <button class="btn-secondary" id="login-google-btn" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <i class="fa-brands fa-google" style="color: #DB4437;"></i> Continue with Google
+              </button>
+              <button class="btn-secondary" id="login-apple-btn" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <i class="fa-brands fa-apple"></i> Continue with Apple
+              </button>
+              <button class="btn-secondary" id="login-phone-btn" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <i class="fa-solid fa-phone"></i> Continue with Mobile Number
+              </button>
+              <button class="btn-secondary" id="login-email-btn" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <i class="fa-solid fa-envelope"></i> Continue with Email Address
+              </button>
+              <div style="display: flex; align-items: center; margin: var(--space-2) 0;">
+                <div style="flex-grow:1; height: 1px; background: var(--glass-border);"></div>
+                <span style="font-size: 11px; color: var(--text-muted); margin: 0 var(--space-4);">OR</span>
+                <div style="flex-grow:1; height: 1px; background: var(--glass-border);"></div>
+              </div>
+              <button class="btn-primary" id="login-guest-btn" style="justify-content: center;">
+                Experience as Guest <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. ONBOARDING Personalization -->
+        <div class="app-screen" id="screen-onboarding">
+          <div class="onboarding-wizard glass-card">
+            
+            <!-- Step 1: Language selection -->
+            <div class="wizard-step active" id="onboard-step-languages">
+              <h3>Choose Your Preferred Music Languages</h3>
+              <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">Select as many as you listen to. We'll adjust recommendation weights instantly.</p>
+              
+              <div class="grid-selection" id="language-selection-grid">
+                <!-- Javascript will inject options like Hindi, Telugu, English, etc. -->
+              </div>
+              
+              <div class="wizard-footer">
+                <div></div>
+                <button class="btn-primary" id="onboard-lang-next">Next: Favorite Genres <i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 2: Genres selection -->
+            <div class="wizard-step" id="onboard-step-genres">
+              <h3>Select Your Favorite Genres</h3>
+              <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">Helps the AI construct your initial DJ flow seed.</p>
+              
+              <div class="grid-selection" id="genre-selection-grid">
+                <!-- JS Inject -->
+              </div>
+              
+              <div class="wizard-footer">
+                <button class="btn-secondary" id="onboard-genre-back"><i class="fa-solid fa-chevron-left"></i> Back</button>
+                <button class="btn-primary" id="onboard-genre-next">Next: Pick Artists <i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 3: Artists selection -->
+            <div class="wizard-step" id="onboard-step-artists">
+              <h3>Pick Artists You Love</h3>
+              <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">We'll curate customized radio flows for these creators.</p>
+              
+              <div class="grid-selection" id="artist-selection-grid">
+                <!-- JS Inject -->
+              </div>
+              
+              <div class="wizard-footer">
+                <button class="btn-secondary" id="onboard-artist-back"><i class="fa-solid fa-chevron-left"></i> Back</button>
+                <button class="btn-primary" id="onboard-artist-next">Next: Select Moods & Goals <i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 4: Moods & Goals selection -->
+            <div class="wizard-step" id="onboard-step-goals">
+              <h3>Your Listen Preferences</h3>
+              <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">Select what fits your routine. SRI AI automatically tunes music parameters.</p>
+              
+              <div class="grid-selection" id="goals-selection-grid">
+                <div class="select-card" data-val="focus"><span>Focus & Work</span></div>
+                <div class="select-card" data-val="workout"><span>Workout BPM</span></div>
+                <div class="select-card" data-val="sleep"><span>Sleep & Relax</span></div>
+                <div class="select-card" data-val="commute"><span>Smart Commute</span></div>
+                <div class="select-card" data-val="festive"><span>Festivals & Beats</span></div>
+                <div class="select-card" data-val="travel"><span>Travel Soundtrack</span></div>
+              </div>
+              
+              <div class="wizard-footer">
+                <button class="btn-secondary" id="onboard-goals-back"><i class="fa-solid fa-chevron-left"></i> Back</button>
+                <button class="btn-primary" id="onboard-goals-finish">Finish Personalization <i class="fa-solid fa-check"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. HOME SCREEN -->
+        <div class="app-screen active" id="screen-home">
+          
+          <!-- Premium Spark Banner -->
+          <div class="premium-banner">
+            <div class="banner-content">
+              <span class="banner-tag">AI DJ Active</span>
+              <h2 class="banner-title">Monsoon Rain Vibe Detected</h2>
+              <p class="banner-desc">Playing calming Sanskrit sitar & soft ghazals based on your Pune location weather. Let your thoughts flow.</p>
+            </div>
+            <button class="banner-action-btn" id="home-banner-play-btn"><i class="fa-solid fa-play"></i> Start Vibe</button>
+          </div>
+
+          <!-- Quick Personalization Chips / Hot Toggles -->
+          <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6); overflow-x: auto; padding-bottom: 4px;">
+            <button class="ai-chip" style="background: var(--gradient-ai); color: #FFFFFF;" id="chip-aidj"><i class="fa-solid fa-robot"></i> AI DJ Mode</button>
+            <button class="ai-chip" id="chip-commute"><i class="fa-solid fa-car-side"></i> Commute Mode</button>
+            <button class="ai-chip" id="chip-workout"><i class="fa-solid fa-dumbbell"></i> Workout BPM</button>
+            <button class="ai-chip" id="chip-focus"><i class="fa-solid fa-brain"></i> Deep Focus</button>
+            <button class="ai-chip" id="chip-meditate"><i class="fa-solid fa-spa"></i> Meditate</button>
+          </div>
+
+          <!-- Section: Continue Listening -->
+          <div style="margin-bottom: var(--space-6);">
+            <h2>Continue Listening</h2>
+            <div class="card-grid" id="home-continue-grid">
+              <!-- JS Inject Cards -->
+            </div>
+          </div>
+
+          <!-- Section: AI Personalized Picks -->
+          <div style="margin-bottom: var(--space-6);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h2>AI Weekly Recommendations</h2>
+              <span style="color: var(--accent-glow); font-size: 13px; cursor: pointer;">Show Time Capsule <i class="fa-solid fa-circle-notch"></i></span>
+            </div>
+            <div class="card-grid" id="home-ai-picks-grid">
+              <!-- JS Inject Cards -->
+            </div>
+          </div>
+
+          <!-- Section: Regional language picks & Festivals -->
+          <div style="margin-bottom: var(--space-6);">
+            <h2>Trending Regional Hits</h2>
+            <div class="card-grid" id="home-regional-grid">
+              <!-- JS Inject Cards -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. SEARCH SCREEN -->
+        <div class="app-screen" id="screen-search">
+          <h2>AI Smart Search & Discovery</h2>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">Type full natural descriptions like "Punjabi drill beats with traditional flutes" or click Voice Search.</p>
+
+          <div class="glass-card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
+            <h4 style="margin-bottom: var(--space-3); font-size: 15px; text-transform: uppercase; color: var(--text-muted);">Trending Searches</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);" id="search-trending-chips">
+              <span class="ai-chip">Humming Detector</span>
+              <span class="ai-chip">A.R. Rahman Hits</span>
+              <span class="ai-chip">Sleep sound generator</span>
+              <span class="ai-chip">Language learning songs</span>
+              <span class="ai-chip">Sidhu Moose Wala</span>
+              <span class="ai-chip">Lofi Marathi Ghumat</span>
+            </div>
+          </div>
+
+          <h3>Instant Results</h3>
+          <div class="song-rows-list" id="search-results-list" style="margin-top: var(--space-4);">
+            <!-- JS Inject Rows -->
+          </div>
+        </div>
+
+        <!-- 6. DISCOVER SCREEN -->
+        <div class="app-screen" id="screen-discover">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+            <h2>Discover What's Next</h2>
+            <span style="color: var(--premium-gold); font-size: 13px;"><i class="fa-solid fa-map-pin"></i> Nearby Concert Finder Active</span>
+          </div>
+
+          <!-- Carousel Container -->
+          <div class="premium-banner" style="background: linear-gradient(135deg, #180828 0%, #1e1145 60%, #0d385c 100%);">
+            <div class="banner-content">
+              <span class="banner-tag" style="background: var(--gradient-ai); color: #FFF;">Independent Spotlight</span>
+              <h2 class="banner-title">Maati Folk Collective</h2>
+              <p class="banner-desc">Fusion of Konkani folk chants with modern synthwave, breaking charts in Goa today.</p>
+            </div>
+            <button class="banner-action-btn" id="discover-spotlight-btn"><i class="fa-solid fa-play"></i> Listen</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
+            
+            <!-- Concert Finder Map Mock -->
+            <div class="glass-card">
+              <h3>Live Events & Concerts Near You</h3>
+              <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: 13px;">Based on your current Indian city coordinates.</p>
+              
+              <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: var(--radius-md); height: 160px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <span style="color: var(--text-secondary); font-size: 13px;"><i class="fa-solid fa-earth-asia"></i> Loading Interactive Live Map...</span>
+                <!-- Map Marker Dots -->
+                <div style="position: absolute; top: 30%; left: 40%; width: 10px; height: 10px; background: var(--accent-glow); border-radius: var(--radius-full); box-shadow: 0 0 10px var(--accent-glow);"></div>
+                <div style="position: absolute; top: 60%; left: 70%; width: 10px; height: 10px; background: var(--premium-gold); border-radius: var(--radius-full); box-shadow: 0 0 10px var(--premium-gold);"></div>
+              </div>
+            </div>
+
+            <!-- AI Podcast Summaries -->
+            <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3>AI Podcast Digest</h3>
+                <p style="color: var(--text-secondary); font-size: 12.5px; margin-top: 4px;">Get a 2-minute summary of the latest 1-hour Indian Tech Podcasts.</p>
+              </div>
+              <button class="btn-secondary" style="font-size: 12.5px; width: 100%; text-align: center;"><i class="fa-solid fa-bolt"></i> Generate Summary</button>
+            </div>
+          </div>
+
+          <h2>AI Curated Live Radio</h2>
+          <div class="card-grid" id="discover-radio-grid">
+            <!-- JS Inject Cards -->
+          </div>
+        </div>
+
+        <!-- 7. PLAYLIST MANAGER SCREEN -->
+        <div class="app-screen" id="screen-playlist">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+            <h2>Your Intelligent Playlists</h2>
+            <button class="btn-primary" id="btn-create-playlist"><i class="fa-solid fa-plus"></i> Smart Playlist</button>
+          </div>
+
+          <!-- Prompt engine to generate playlists -->
+          <div class="glass-card" style="margin-bottom: var(--space-8); background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(24, 24, 27, 0.7) 100%);">
+            <h3>AI Music Prompt Generator</h3>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: 13.5px;">Describe the mood, language mix, and artist profile to build an instant dynamic playlist.</p>
+            <div style="display: flex; gap: var(--space-3);">
+              <input type="text" id="ai-playlist-prompt" placeholder="e.g. 'Chill Urdu ghazals mixed with ambient rainfall acoustics for writing'" style="flex-grow: 1; background: rgba(0,0,0,0.25); border: 1px solid var(--glass-border); border-radius: var(--radius-full); padding: var(--space-3) var(--space-4); color: var(--text-primary); outline: none;">
+              <button class="btn-primary" id="ai-playlist-generate-btn"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate</button>
+            </div>
+          </div>
+
+          <h2>Your Curated Playlists</h2>
+          <div class="card-grid" id="playlist-custom-grid">
+            <!-- JS Inject Playlist Cards -->
+          </div>
+        </div>
+
+        <!-- 8. ARTIST PROFILE SCREEN -->
+        <div class="app-screen" id="screen-artist">
+          <!-- Banner Hero -->
+          <div id="artist-profile-hero" style="height: 240px; border-radius: var(--radius-lg); overflow: hidden; position: relative; margin-bottom: var(--space-6); display: flex; align-items: flex-end; padding: var(--space-6); background-size: cover; background-position: center;">
+            <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(9,9,11,0.9) 0%, rgba(9,9,11,0.2) 100%); z-index: 1;"></div>
+            <div style="z-index: 2;">
+              <span style="font-size: 11px; text-transform: uppercase; background: var(--accent-glow); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 700; color: #FFF; margin-bottom: var(--space-2); display: inline-block;">Verified Creator</span>
+              <h1 id="artist-name" style="font-size: 38px; font-weight: 800; margin-bottom: var(--space-2);">A.R. Rahman</h1>
+              <p style="color: var(--text-secondary); font-size: 14px;"><i class="fa-solid fa-users"></i> <span id="artist-followers">12.5M</span> Followers</p>
+            </div>
+            <button class="btn-primary" id="artist-follow-btn" style="position: absolute; right: var(--space-6); bottom: var(--space-6); z-index: 2;">Follow</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2.2fr 1.2fr; gap: var(--space-8); margin-bottom: var(--space-8);">
+            <!-- Discography -->
+            <div>
+              <h3>Popular Releases</h3>
+              <div class="song-rows-list" id="artist-popular-songs" style="margin-top: var(--space-4);">
+                <!-- Popular songs list -->
+              </div>
+            </div>
+
+            <!-- Extra Info (Events, Bio, Merch) -->
+            <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+              <div class="glass-card">
+                <h3>About the Artist</h3>
+                <p id="artist-bio" style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-top: var(--space-2);">Renowned Indian composer, singer, and songwriter. Nicknamed the "Mozart of Madras", pioneering the integration of Indian classical music with electronic music beats.</p>
+              </div>
+
+              <div class="glass-card">
+                <h3>Merchandise Hub</h3>
+                <div style="display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-2);">
+                  <div style="width: 50px; height: 50px; border-radius: var(--radius-sm); background: var(--bg-tertiary); display:flex; align-items:center; justify-content:center;">
+                    <i class="fa-solid fa-shirt" style="font-size: 20px;"></i>
+                  </div>
+                  <div>
+                    <h4 style="font-size: 13px;">Raaga Vinyl Series</h4>
+                    <p style="color: var(--premium-gold); font-size: 12px;">₹2,499 - Collector's Edition</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. AI ASSISTANT FULLSCREEN CHAT CONSOLE -->
+        <div class="app-screen" id="screen-ai-assistant">
+          <div class="glass-card" style="height: 600px; display: flex; flex-direction: column; padding: 0;">
+            <div style="padding: var(--space-4) var(--space-6); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div class="ai-avatar-glow"></div>
+                <div>
+                  <h3 style="font-size: 16px;">SRI Sound Mind AI</h3>
+                  <p style="font-size: 11px; color: var(--text-secondary);">Real-time mood matching, workout rhythm syncing, and hum detector.</p>
+                </div>
+              </div>
+              <div>
+                <button class="header-btn" title="Start voice mode"><i class="fa-solid fa-phone-volume"></i></button>
+              </div>
+            </div>
+
+            <!-- Messages Stage -->
+            <div class="ai-chat-messages" id="screen-ai-messages-list">
+              <!-- JS Inject bubble -->
+            </div>
+
+            <!-- Console Inputs Footer -->
+            <div class="ai-panel-footer">
+              <div class="ai-suggestions-row">
+                <span class="ai-chip" onclick="triggerAiPreset('Generate a high-tempo workout mix of Telugu drums')">Workout Mix</span>
+                <span class="ai-chip" onclick="triggerAiPreset('Match sleep sounds to raining forecast')">Rain Sound Generator</span>
+                <span class="ai-chip" onclick="triggerAiPreset('Create a nostalgic 90s Punjabi time capsule')">Nostalgic Capsule</span>
+                <span class="ai-chip" onclick="triggerAiPreset('Explain the cultural meaning behind Sanskrit Shlokas')">Shloka Translator</span>
+              </div>
+              <div class="ai-input-wrapper">
+                <input type="text" id="screen-ai-input" placeholder="Tell AI: 'Increase track BPM to match 140 heart rate'...">
+                <button class="ai-send-btn" id="screen-ai-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. PREMIUM SUBSCRIPTION MATRIX -->
+        <div class="app-screen" id="screen-premium">
+          <div style="text-align: center; margin-bottom: var(--space-8);">
+            <h1 class="luxury-heading" style="font-size: 40px; margin-bottom: 10px;">Elevate Your Audio Consciousness</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Select from the master subscription plans. Unlock lossless Ultra HiFi, real-time translating karaoke, and local offline AI engines.</p>
+          </div>
+
+          <div class="pricing-grid">
+            
+            <!-- Plan: Free -->
+            <div class="glass-card pricing-card">
+              <div>
+                <h3 style="font-size: 20px;">Free Tier</h3>
+                <h2 style="font-size: 32px; font-weight: 800; margin: var(--space-3) 0;">₹0<span style="font-size: 13px; color: var(--text-secondary);">/month</span></h2>
+                <ul class="pricing-features-list">
+                  <li>Standard 256kbps audio</li>
+                  <li>Online playlist curation</li>
+                  <li>Ad-supported play</li>
+                  <li>Basic translation</li>
+                </ul>
+              </div>
+              <button class="btn-secondary" style="width: 100%; margin-top: var(--space-4);">Current Plan</button>
+            </div>
+
+            <!-- Plan: Plus -->
+            <div class="glass-card pricing-card">
+              <div>
+                <h3 style="font-size: 20px;">Plus Tier</h3>
+                <h2 style="font-size: 32px; font-weight: 800; margin: var(--space-3) 0;">₹99<span style="font-size: 13px; color: var(--text-secondary);">/month</span></h2>
+                <ul class="pricing-features-list">
+                  <li>Ad-free listening</li>
+                  <li>Offline storage</li>
+                  <li>High Fidelity 320kbps</li>
+                  <li>Offline AI DJ assistant</li>
+                </ul>
+              </div>
+              <button class="btn-primary" style="width: 100%; margin-top: var(--space-4); justify-content: center;">Upgrade Plus</button>
+            </div>
+
+            <!-- Plan: Family -->
+            <div class="glass-card pricing-card">
+              <div>
+                <h3 style="font-size: 20px;">Family Tier</h3>
+                <h2 style="font-size: 32px; font-weight: 800; margin: var(--space-3) 0;">₹179<span style="font-size: 13px; color: var(--text-secondary);">/month</span></h2>
+                <ul class="pricing-features-list">
+                  <li>Up to 6 accounts</li>
+                  <li>Shared AI Playlists</li>
+                  <li>Friend Match scores</li>
+                  <li>Kids safe mode filtering</li>
+                </ul>
+              </div>
+              <button class="btn-primary" style="width: 100%; margin-top: var(--space-4); justify-content: center;">Get Family</button>
+            </div>
+
+            <!-- Plan: Ultra HiFi -->
+            <div class="glass-card pricing-card premium-tier">
+              <div>
+                <h3 style="font-size: 20px; color: var(--premium-gold);">Ultra HiFi</h3>
+                <h2 style="font-size: 32px; font-weight: 800; color: var(--premium-gold); margin: var(--space-3) 0;">₹299<span style="font-size: 13px; color: var(--text-secondary);">/month</span></h2>
+                <ul class="pricing-features-list">
+                  <li>Lossless Studio Quality 24-bit</li>
+                  <li>Real-time translating Karaoke</li>
+                  <li>Spatial Audio 3D rendering</li>
+                  <li>Priority access to live radio</li>
+                </ul>
+              </div>
+              <button class="btn-primary" style="width: 100%; margin-top: var(--space-4); justify-content: center; background: var(--gradient-gold); color: #000000;">Purchase Ultra</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. DOWNLOADS / OFFLINE MANAGER -->
+        <div class="app-screen" id="screen-downloads">
+          <h2>Offline Music Hub</h2>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">Play, manage, and delete offline audio logs.</p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
+            <div class="glass-card">
+              <h3>Storage Allocation</h3>
+              <div style="margin: var(--space-3) 0;">
+                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: var(--radius-full); overflow: hidden;">
+                  <div style="height: 100%; background: var(--accent-glow); width: 42%;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; margin-top: var(--space-2); color: var(--text-secondary);">
+                  <span>Used: 8.4 GB</span>
+                  <span>Free: 55.6 GB</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <h3>Download Audio Quality</h3>
+              <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: var(--space-2);">Choose default downloading quality settings.</p>
+              <select style="width: 100%; background: var(--bg-tertiary); color: #FFF; border: 1px solid var(--glass-border); padding: 8px; border-radius: var(--radius-sm); outline: none;">
+                <option>Lossless ALAC (24-bit/192kHz) - Premium only</option>
+                <option selected>High AAC (320kbps)</option>
+                <option>Normal AAC (192kbps)</option>
+                <option>Efficient HE-AAC (96kbps)</option>
+              </select>
+            </div>
+          </div>
+
+          <h3>Offline Tracks</h3>
+          <div class="song-rows-list" id="downloads-song-list" style="margin-top: var(--space-4);">
+            <!-- JS Inject Rows -->
+          </div>
+        </div>
+
+        <!-- 12. NOTIFICATIONS SCREEN -->
+        <div class="app-screen" id="screen-notifications">
+          <h2>Activity & Alerts Feed</h2>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">Notifications from artists you follow and AI activity matchers.</p>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);" id="notifications-list-container">
+            <!-- Alert Items will be dynamically generated in Javascript -->
+          </div>
+        </div>
+
+        <!-- 13. USER PROFILE & STATS -->
+        <div class="app-screen" id="screen-profile">
+          <div style="display: flex; align-items: center; gap: var(--space-6); margin-bottom: var(--space-8);">
+            <img style="width: 90px; height: 90px; border-radius: var(--radius-full); object-fit: cover; object-position: top; border: 2px solid var(--accent-glow);" src="profile.jpg" alt="Avatar">
+            <div>
+              <h1 id="profile-display-name">Srijith</h1>
+              <p style="color: var(--text-secondary);"><i class="fa-solid fa-award" style="color: var(--premium-gold);"></i> Sound Explorer Class VII</p>
+            </div>
+          </div>
+
+          <div class="profile-stats-grid">
+            <div class="glass-card stat-card">
+              <span class="stat-number">4,820</span>
+              <p style="font-size: 13px; color: var(--text-secondary);">Minutes Listened</p>
+            </div>
+            <div class="glass-card stat-card">
+              <span class="stat-number">12</span>
+              <p style="font-size: 13px; color: var(--text-secondary);">Languages Heard</p>
+            </div>
+            <div class="glass-card stat-card">
+              <span class="stat-number">98%</span>
+              <p style="font-size: 13px; color: var(--text-secondary);">Friend Match Score</p>
+            </div>
+          </div>
+
+          <h3>Your Listening Time Capsule</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-4); font-size: 13px;">AI generated snapshot of your monthly sound preferences.</p>
+          <div class="glass-card" style="margin-bottom: var(--space-8);">
+            <h4 style="color: var(--accent-glow); margin-bottom: var(--space-2);">July Sound Journal</h4>
+            <p style="font-size: 13.5px; line-height: 1.5;">"You have transitioned from heavy Carnatic strings towards modern Punjabi lo-fi beats, showing a relaxing pattern in the early evenings around 6:00 PM when rainfall is active in Pune."</p>
+          </div>
+        </div>
+
+        <!-- 14. SETTINGS SCREEN -->
+        <div class="app-screen" id="screen-settings">
+          <h2>Application Configuration Settings</h2>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">Configure sound qualities, accessibility parameters, and UI themes.</p>
+
+          <div class="glass-card" style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-8);">
+            <!-- Theme Toggle -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: var(--space-3);">
+              <div>
+                <h4>Light Mode Theme</h4>
+                <p style="font-size: 12px; color: var(--text-secondary);">Switch to clean paper visual layout mode.</p>
+              </div>
+              <label class="switch-control">
+                <input type="checkbox" id="settings-theme-toggle">
+                <span class="slider-switch"></span>
+              </label>
+            </div>
+
+            <!-- Accessibility - High Contrast -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: var(--space-3);">
+              <div>
+                <h4>High Contrast Mode</h4>
+                <p style="font-size: 12px; color: var(--text-secondary);">Enhance boundaries and details for low vision reading.</p>
+              </div>
+              <label class="switch-control">
+                <input type="checkbox" id="settings-contrast-toggle">
+                <span class="slider-switch"></span>
+              </label>
+            </div>
+
+            <!-- Accessibility - Font Scaling -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: var(--space-3);">
+              <div>
+                <h4>Dynamic Text Scaling</h4>
+                <p style="font-size: 12px; color: var(--text-secondary);">Enlarge all screen texts globally.</p>
+              </div>
+              <select id="settings-font-scale" style="background: var(--bg-tertiary); color: #FFF; border: 1px solid var(--glass-border); padding: 4px 10px; border-radius: var(--radius-sm); outline: none;">
+                <option value="1">Standard (100%)</option>
+                <option value="1.15">Medium (115%)</option>
+                <option value="1.3">Large (130%)</option>
+              </select>
+            </div>
+
+            <!-- Default Language switch -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <h4>System Translation Language</h4>
+                <p style="font-size: 12px; color: var(--text-secondary);">Translate song lyrics and menus instantly into this script.</p>
+              </div>
+              <select id="settings-trans-lang" style="background: var(--bg-tertiary); color: #FFF; border: 1px solid var(--glass-border); padding: 4px 10px; border-radius: var(--radius-sm); outline: none;">
+                <option value="English">English</option>
+                <option value="Hindi" selected>Hindi / हिन्दी</option>
+                <option value="Telugu">Telugu / తెలుగు</option>
+                <option value="Tamil">Tamil / தமிழ்</option>
+                <option value="Kannada">Kannada / ಕನ್ನಡ</option>
+                <option value="Malayalam">Malayalam / മലയാളം</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- RIGHT FLOATING AI CHAT PANEL -->
+    <aside class="ai-panel" id="right-ai-panel">
+      <div class="ai-panel-header">
+        <div style="display: flex; align-items: center; gap: var(--space-2);">
+          <div class="ai-avatar-glow"></div>
+          <div>
+            <h4 style="font-size: 13px;">AI Sound DJ</h4>
+            <span style="font-size: 10px; color: var(--success-color);"><i class="fa-solid fa-circle"></i> Online</span>
+          </div>
+        </div>
+        <button class="header-btn" id="btn-close-ai-panel" style="width: 28px; height: 28px; font-size: 11px;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Messages row -->
+      <div class="ai-chat-messages" id="panel-ai-messages-list">
+        <div class="chat-bubble assistant">
+          Hello! I'm monitoring weather, your heart rate (BPM 82), and local Pune rainfall. Would you like me to mix a soothing morning raaga?
+        </div>
+      </div>
+
+      <!-- Footer inputs -->
+      <div class="ai-panel-footer">
+        <div class="ai-input-wrapper">
+          <input type="text" id="panel-ai-input" placeholder="e.g. 'Play running music at 135 bpm'...">
+          <button class="ai-send-btn" id="panel-ai-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- BOTTOM FLOATING AUDIO CONTROLLER BAR (15. MINI PLAYER) -->
+    <footer class="bottom-player">
+      
+      <!-- Track info -->
+      <div class="player-now-playing">
+        <div class="player-artwork-btn" id="mini-player-expand-btn">
+          <img class="player-artwork" id="mini-player-artwork" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=150&q=80" alt="Artwork">
+          <div class="player-expand-indicator"><i class="fa-solid fa-chevron-up"></i></div>
+        </div>
+        <div class="player-track-details">
+          <span class="player-track-title" id="mini-player-title">Monsoon Bhairav</span>
+          <span class="player-track-artist" id="mini-player-artist">Classical AI Ensemble</span>
+        </div>
+        <button class="control-btn" id="mini-like-btn" style="width:24px; height:24px; font-size: 13px;" title="Like track"><i class="fa-regular fa-heart"></i></button>
+      </div>
+
+      <!-- Playback buttons -->
+      <div class="player-controls-center">
+        <div class="player-buttons">
+          <button class="control-btn" id="player-btn-shuffle" title="Shuffle Mode"><i class="fa-solid fa-shuffle"></i></button>
+          <button class="control-btn" id="player-btn-prev" title="Previous Song"><i class="fa-solid fa-backward-step"></i></button>
+          <button class="control-btn btn-play" id="player-btn-play" title="Play / Pause"><i class="fa-solid fa-play"></i></button>
+          <button class="control-btn" id="player-btn-next" title="Next Song"><i class="fa-solid fa-forward-step"></i></button>
+          <button class="control-btn" id="player-btn-repeat" title="Repeat Mode"><i class="fa-solid fa-repeat"></i></button>
+        </div>
+        <div class="player-progressbar-container">
+          <span class="player-time" id="player-time-current">0:00</span>
+          <div class="player-slider-track" id="player-time-track">
+            <div class="player-slider-fill" id="player-time-fill">
+              <div class="player-slider-handle"></div>
+            </div>
+          </div>
+          <span class="player-time" id="player-time-duration">3:45</span>
+        </div>
+      </div>
+
+      <!-- Right hand widgets -->
+      <div class="player-controls-right">
+        <!-- Live equalizer wave representation -->
+        <div class="mini-equalizer-bars" id="mini-equalizer-wave">
+          <div class="mini-eq-bar paused"></div>
+          <div class="mini-eq-bar paused"></div>
+          <div class="mini-eq-bar paused"></div>
+          <div class="mini-eq-bar paused"></div>
+        </div>
+
+        <button class="control-btn" id="player-btn-lyrics" title="Karaoke translation lyrics mode"><i class="fa-solid fa-microphone-lines"></i></button>
+        
+        <div class="player-volume-container">
+          <i class="fa-solid fa-volume-high" style="font-size: 13px; color: var(--text-secondary);"></i>
+          <div class="player-slider-track" id="player-volume-track" style="width: 80px;">
+            <div class="player-slider-fill" id="player-volume-fill" style="width: 70%;">
+              <div class="player-slider-handle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- 15. EXPANDED MUSIC PLAYER FULLSCREEN MODAL -->
+  <div class="expanded-player-modal" id="expanded-player">
+    
+    <!-- Header -->
+    <header class="ep-header">
+      <button class="header-btn" id="expanded-player-close-btn" title="Back to Dashboard"><i class="fa-solid fa-chevron-down"></i></button>
+      <div style="text-align: center;">
+        <span style="font-size: 10px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 1px;">Now Playing</span>
+        <h4 id="ep-header-playlist-name" style="font-size: 13px;">Pune Rain Playlist</h4>
+      </div>
+      <button class="header-btn" id="ep-btn-lyrics-trans-toggle" title="Translate Lyrics"><i class="fa-solid fa-language"></i></button>
+    </header>
+
+    <!-- Column Left: Artwork & Details -->
+    <div class="ep-left-content">
+      <div class="ep-artwork-container">
+        <img class="ep-artwork" id="ep-artwork" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=600&q=80" alt="Artwork">
+      </div>
+      
+      <div style="width: 380px; max-width: 90%; display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <div>
+          <h2 id="ep-title" style="font-size: 24px; font-weight: 800;">Monsoon Bhairav</h2>
+          <p id="ep-artist" style="color: var(--text-secondary); font-size: 15px; margin-top: 2px;">Classical AI Ensemble</p>
+        </div>
+        <button class="control-btn" id="ep-like-btn" style="font-size: 20px;"><i class="fa-regular fa-heart"></i></button>
+      </div>
+
+      <!-- Quick AI details snippet -->
+      <div class="glass-card" style="width: 380px; max-width: 90%; padding: var(--space-4); border-color: rgba(139, 92, 246, 0.2);">
+        <h5 style="color: var(--accent-glow); margin-bottom: 4px; font-size: 12px;"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Song Analyzer</h5>
+        <p id="ep-ai-explanation" style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;">"Monsoon Bhairav utilizes heavy sitar patterns configured to 72 BPM, syncing directly with slow breathing rates to lower sympathetic stress."</p>
+      </div>
+    </div>
+
+    <!-- Column Right: Lyrics, EQ, Karaoke Toggles -->
+    <div class="ep-right-content">
+      
+      <!-- Top Action Tabs -->
+      <div class="player-mode-tabs">
+        <button class="player-mode-tab active" data-panel="ep-panel-lyrics">Sync Lyrics</button>
+        <button class="player-mode-tab" data-panel="ep-panel-equalizer">EQ Adjust</button>
+        <button class="player-mode-tab" data-panel="ep-panel-spatial">Spatial Sound</button>
+      </div>
+
+      <!-- Tab Content 1: Lyrics & Karaoke translation -->
+      <div class="player-tab-panel active" id="ep-panel-lyrics">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: var(--text-secondary);">Real-time translation active (English-Hindi)</span>
+          <button class="btn-secondary" id="ep-karaoke-toggle-btn" style="font-size: 11px; padding: 4px 10px;"><i class="fa-solid fa-microphone"></i> Karaoke Mode</button>
+        </div>
+        <div class="lyrics-scroll" id="ep-lyrics-scroll-container">
+          <!-- Lyrics will load dynamically here in JS -->
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Equalizer slider panels -->
+      <div class="player-tab-panel" id="ep-panel-equalizer">
+        <h3>Studio Audio Parametric Equalizer</h3>
+        <p style="color: var(--text-secondary); font-size: 12px; margin-bottom: var(--space-4);">Select frequency responses or use custom preset overrides.</p>
+        
+        <div class="equalizer-container">
+          <div class="eq-band">
+            <input type="range" class="eq-slider" min="-12" max="12" value="4">
+            <span class="eq-label">60Hz</span>
+          </div>
+          <div class="eq-band">
+            <input type="range" class="eq-slider" min="-12" max="12" value="2">
+            <span class="eq-label">230Hz</span>
+          </div>
+          <div class="eq-band">
+            <input type="range" class="eq-slider" min="-12" max="12" value="-2">
+            <span class="eq-label">910Hz</span>
+          </div>
+          <div class="eq-band">
+            <input type="range" class="eq-slider" min="-12" max="12" value="5">
+            <span class="eq-label">4kHz</span>
+          </div>
+          <div class="eq-band">
+            <input type="range" class="eq-slider" min="-12" max="12" value="8">
+            <span class="eq-label">14kHz</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+          <button class="ai-chip" style="background: var(--accent-color); color: #FFF;">Acoustic</button>
+          <button class="ai-chip">Bass Boost</button>
+          <button class="ai-chip">Vocal Focus</button>
+          <button class="ai-chip">Flat response</button>
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Spatial Audio Controls -->
+      <div class="player-tab-panel" id="ep-panel-spatial">
+        <h3>Spatial 3D Audio rendering</h3>
+        <p style="color: var(--text-secondary); font-size: 12px; margin-bottom: var(--space-4);">Simulates a premium studio environment using binaural soundscapes.</p>
+        
+        <div class="glass-card" style="text-align: center; padding: var(--space-6);">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius-full); background: rgba(139, 92, 246, 0.1); border: 2px dashed var(--accent-glow); margin: 0 auto var(--space-4) auto; display: flex; align-items: center; justify-content: center; position: relative;">
+            <i class="fa-solid fa-headphones" style="font-size: 32px; color: var(--accent-glow);"></i>
+            <!-- Orbiting circle representing rotation -->
+            <div style="position: absolute; width: 12px; height: 12px; background: var(--premium-gold); border-radius: var(--radius-full); top: 10%; right: 10%;"></div>
+          </div>
+          
+          <h4 style="margin-bottom: 4px;">Dynamic Head Tracking Active</h4>
+          <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: var(--space-4);">Acoustics adjust matching head coordinates and gyroscope feeds.</p>
+          
+          <div style="display: flex; justify-content: center; gap: var(--space-3);">
+            <button class="btn-primary" style="font-size: 12.5px;">Test Spatial Vibe</button>
+            <button class="btn-secondary" style="font-size: 12.5px;">Configure Settings</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equalizer buttons repeat (Play/Pause mirroring) -->
+      <div style="margin-top: auto; border-top: 1px solid var(--glass-border); padding-top: var(--space-4); display: flex; align-items: center; justify-content: space-between;">
+        <!-- Track Duration slider mirroring -->
+        <div style="display: flex; align-items: center; gap: 12px; flex-grow: 1; margin-right: 24px;">
+          <span style="font-size: 11px; color: var(--text-secondary);" id="ep-time-current">0:00</span>
+          <div class="player-slider-track" id="ep-time-track" style="height: 6px;">
+            <div class="player-slider-fill" id="ep-time-fill" style="width: 30%;"></div>
+          </div>
+          <span style="font-size: 11px; color: var(--text-secondary);" id="ep-time-duration">3:45</span>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button class="control-btn" id="ep-btn-prev"><i class="fa-solid fa-backward-step"></i></button>
+          <button class="control-btn btn-play" id="ep-btn-play" style="width: 50px; height: 50px; font-size: 20px;"><i class="fa-solid fa-play"></i></button>
+          <button class="control-btn" id="ep-btn-next"><i class="fa-solid fa-forward-step"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION TAB BAR -->
+  <nav class="mobile-nav-bar" id="mobile-nav-bar">
+    <div class="mobile-nav-item active" data-target="screen-home">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </div>
+    <div class="mobile-nav-item" data-target="screen-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Search</span>
+    </div>
+    <div class="mobile-nav-item" data-target="screen-ai-assistant">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>AI Assistant</span>
+    </div>
+    <div class="mobile-nav-item" data-target="screen-playlist">
+      <i class="fa-solid fa-music"></i>
+      <span>Playlists</span>
+    </div>
+    <div class="mobile-nav-item" data-target="screen-profile">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </div>
+  </nav>
+
+  <!-- Custom script file -->
+  <script src="app.js"></script>
+</body>
+</html>
