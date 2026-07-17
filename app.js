@@ -131,6 +131,76 @@ const TRACK_LIBRARY = [
       { text: 'Kurukku siruthavale enna kolliponaal', trans: 'पतली कमर वाली लड़की मुझे मार गई (The girl with the slender waist stole my soul)' },
       { text: 'En nenjil un ninaivu eppodhum irukkum', trans: 'मेरे दिल में तुम्हारी याद हमेशा रहेगी (Your memory will stay in my heart forever)' }
     ]
+  },
+  {
+    id: 8,
+    title: 'Pooja Thala',
+    artist: 'A. Thyagaraja x Modern Strings',
+    album: 'Classical Meets Devotion',
+    artwork: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80',
+    duration: 195,
+    aiText: 'Carnatic classical devotion in Tamil, perfect for morning meditation with traditional Veena composition.',
+    lyrics: [
+      { text: 'Pooja thala valinaai', trans: 'पूजा को ही मूल मानो (Worship is the foundation)' },
+      { text: 'Shankara thanimai nila', trans: 'शंकर की शक्ति के बिना कुछ नहीं (Without Shiva\'s power, nothing exists)' },
+      { text: 'Thirumagal arulinum', trans: 'देवी का आशीर्वाद सदा मिलता रहे (May the goddess\'s blessings flow forever)' }
+    ]
+  },
+  {
+    id: 9,
+    title: 'Kadhal Poovinile (Digital Mix)',
+    artist: 'Ilaiyaraaja x Sid Sriram',
+    album: 'Tamil Love Synthwave',
+    artwork: 'https://images.unsplash.com/photo-1445039076565-d26e75ad52da?auto=format&fit=crop&w=400&q=80',
+    duration: 205,
+    aiText: 'Retro synthwave meets Tamil romantic poetry with 80s nostalgia and modern production at 95 BPM.',
+    lyrics: [
+      { text: 'Kadhal poovinile manjolai', trans: 'प्रेम के फूल में मधु है (Love\'s flower holds nectar)' },
+      { text: 'Unnai adithu vittai en thalaivan', trans: 'मैंने तुम्हें अपने दिल में बसा लिया (I\'ve enshrined you in my heart)' },
+      { text: 'Varai nammalai eruppadhai', trans: 'हम साथ हैं हमेशा (We are forever together)' }
+    ]
+  },
+  {
+    id: 10,
+    title: 'Kaveri Mulla',
+    artist: 'Susheela Raman x AI Tabla',
+    album: 'Rivers of Tamil Nadu',
+    artwork: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=400&q=80',
+    duration: 220,
+    aiText: 'Celebrates the sacred Kaveri river with traditional Tamil folk rhythms and contemporary tabla patterns.',
+    lyrics: [
+      { text: 'Kaveri mulla valam thazha', trans: 'कावेरी नदी की घाटी (Kaveri river valley flows)' },
+      { text: 'Mun vaalkai veru vittai', trans: 'यह हमारे पूर्वजों की जीवन रेखा है (It\'s the lifeline of our ancestors)' },
+      { text: 'En nattil ennangal vaalkai', trans: 'हमारे देश की सांस्कृतिक धरोहर (Our cultural legacy flows)' }
+    ]
+  },
+  {
+    id: 11,
+    title: 'Margazhi Mazhai',
+    artist: 'K. Unnikrishnan x Composers AI',
+    album: 'Winter Rains of Tamil Land',
+    artwork: 'https://images.unsplash.com/photo-1487415380519-e21cc028cb29?auto=format&fit=crop&w=400&q=80',
+    duration: 185,
+    aiText: 'Celebrate the Tamil harvest month of Margazhi with raindrop percussion and 70 BPM meditative flows.',
+    lyrics: [
+      { text: 'Margazhi mazhai vandhu sollum', trans: 'मार्गशीर्ष की बारिश आती है (December rains arrive)' },
+      { text: 'Kanam vallarkai ennai ketta', trans: 'फसलें लहराती हैं (Crops dance in the fields)' },
+      { text: 'Thirunaal nenjila vaalkai', trans: 'त्योहार हमारे दिलों में रहते हैं (Festivals live in our hearts)' }
+    ]
+  },
+  {
+    id: 12,
+    title: 'Oruvan Oruvan (Unity Anthem)',
+    artist: 'TamilNadu United Music',
+    album: 'Modern Tamil Pride',
+    artwork: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80',
+    duration: 198,
+    aiText: 'Uplifting Tamil anthem about unity and pride, blending traditional instruments with trap beats at 130 BPM.',
+    lyrics: [
+      { text: 'Oruvan oruvan naama vaalkai', trans: 'एक-एक करके हम जीवन जीते हैं (Together we live stronger)' },
+      { text: 'Mannargal mayilai nila', trans: 'हमारी मातृभूमि गौरव की भूमि है (Our motherland is glorious)' },
+      { text: 'Thamizh pozhilai naalai maranjaam', trans: 'तमिल भाषा हमारी शक्ति है (Tamil is our strength)' }
+    ]
   }
 ];
 
