@@ -51,12 +51,13 @@ const TRACK_LIBRARY = [
   },
   {
     id: 2,
-    title: 'Deccan Odyssey',
-    artist: 'Ravi Kiran & Sitar Synth',
-    album: 'Deccan Electroscapes',
-    artwork: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=400&q=80',
-    duration: 180,
-    aiText: 'Fuses traditional Telugu Carnatic strings with 110 BPM lo-fi travel ambient beats.',
+    title: 'Monsoon Bhairav (Strings)',
+    artist: 'L. Subramaniam x Tabla Beats',
+    album: 'Seasonal Ragas',
+    artwork: 'https://images.unsplash.com/photo-1487180144351-b8472da7d491?auto=format&fit=crop&w=400&q=80',
+    duration: 288,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    aiText: 'A monsoon-inspired raga with live string orchestration and AI-generated tabla, 95 BPM, transporting listeners to rain-soaked evenings in Kerala.',
     lyrics: [
       { text: 'Cruising through the Western Ghats at dusk', trans: 'धूल भरे रास्तों से होकर पश्चिमी घाटों की सैर' },
       { text: 'Green hills rise into the misty sky', trans: 'हरे पहाड़ धुंधले आसमान में उठते हैं' },
@@ -64,13 +65,14 @@ const TRACK_LIBRARY = [
     ]
   },
   {
-    id: 3,
-    title: 'Sufi Soul (Kabir Vibe)',
-    artist: 'Wadali Brothers Remix',
-    album: 'Timeless Sufi',
-    artwork: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=400&q=80',
-    duration: 285,
-    aiText: 'Kabir verses embedded in slow reverb vocal stacks, matching meditation breathing guides.',
+    id: 4,
+    title: 'Sufi Nights (Electronic Remix)',
+    artist: 'Nusrat Fateh Ali Khan x Producer JAI',
+    album: 'Qawwali Modernized',
+    artwork: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=400&q=80',
+    duration: 256,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+    aiText: 'Timeless Sufi qawwali poetry layered with modern electronic production. 85 BPM, perfect for evening introspection and spiritual journeys.',
     lyrics: [
       { text: 'Inside this clay vessel are gardens and forests', trans: 'इस माटी के घट के भीतर बाग और बगीचे हैं' },
       { text: 'And inside it is the creator of the world', trans: 'और इसके भीतर ही सृष्टि का कर्ता है' },
@@ -78,13 +80,14 @@ const TRACK_LIBRARY = [
     ]
   },
   {
-    id: 4,
-    title: 'Amritsar Drill',
-    artist: 'Fateh Singh x Beats By AI',
-    album: 'Punjab Revolution',
+    id: 1,
+    title: 'Raga Yaman (AI Synth)',
+    artist: 'Anoushka Shankar x AI',
+    album: 'Digital Ragas Collection',
     artwork: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80',
-    duration: 165,
-    aiText: 'High energy Punjabi drill. Synced to high-tempo BPM (140) to boost aerobic performance.',
+    duration: 312,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    aiText: 'Traditional Raga Yaman reimagined with modern AI synthesis and live sitar sampling, 120 BPM, ideal for focused work and meditation.',
     lyrics: [
       { text: 'Folk beats colliding with modern streets', trans: 'आधुनिक गलियों से टकराती लोक धुनें' },
       { text: 'We write our destiny with our own hands', trans: 'हम अपनी तकदीर अपने हाथों से लिखते हैं' },
@@ -93,11 +96,12 @@ const TRACK_LIBRARY = [
   },
   {
     id: 5,
-    title: 'Nila Kantham',
-    artist: 'Devotional AI Sages',
+    title: 'Sanskrit Meditation',
+    artist: 'Vedic Chants x 432Hz Science',
     album: 'Sanskrit Meditations',
     artwork: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=400&q=80',
     duration: 310,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
     aiText: 'Sanskrit chants layered with low frequency drone (432Hz harmonic tuning) for focus.',
     lyrics: [
       { text: 'Shantam shivam advaitam', trans: 'शांतम शिवम अद्वैतम (शांति, कल्याण और अद्वैत)' },
@@ -112,6 +116,7 @@ const TRACK_LIBRARY = [
     album: 'Tamil Resiliency Pack',
     artwork: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=400&q=80',
     duration: 210,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
     aiText: 'Empowering Tamil percussion drums integrated with motivational tempo ranges to stimulate endorphins.',
     lyrics: [
       { text: 'Singappenney ezhundhu vaa', trans: 'शेरनी, उठो और आगे बढ़ो (Lioness, rise and step forward)' },
@@ -126,10 +131,26 @@ const TRACK_LIBRARY = [
     album: 'Tamil Lo-Fi Classics',
     artwork: 'https://images.unsplash.com/photo-1487180142328-054b783fc471?auto=format&fit=crop&w=400&q=80',
     duration: 240,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     aiText: 'Traditional Tamil flute scales layered with modern lo-fi vinyl hiss for deep evening relaxation.',
     lyrics: [
       { text: 'Kurukku siruthavale enna kolliponaal', trans: 'पतली कमर वाली लड़की मुझे मार गई (The girl with the slender waist stole my soul)' },
       { text: 'En nenjil un ninaivu eppodhum irukkum', trans: 'मेरे दिल में तुम्हारी याद हमेशा रहेगी (Your memory will stay in my heart forever)' }
+    ]
+  },
+  {
+    id: 3,
+    title: 'Amritsar Drill',
+    artist: 'Punjabi MC x Trap Foundation',
+    album: 'Bhangra Beats Vol.3',
+    artwork: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80',
+    duration: 198,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+    aiText: 'High-energy Punjabi drums fused with 138 BPM drill beats for cardio workouts and adrenaline.',
+    lyrics: [
+      { text: 'Amritsar veere vee', trans: 'अमृतसर के भाई (Brothers of Amritsar)' },
+      { text: 'Dhol baaje ri dhol baaje', trans: 'ढोल बजता है (Drums beat on)' },
+      { text: 'Bhangra dance kare', trans: 'भांग्रा नाचो (Dance the bhangra)' }
     ]
   },
   {
@@ -139,6 +160,7 @@ const TRACK_LIBRARY = [
     album: 'Classical Meets Devotion',
     artwork: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80',
     duration: 195,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
     aiText: 'Carnatic classical devotion in Tamil, perfect for morning meditation with traditional Veena composition.',
     lyrics: [
       { text: 'Pooja thala valinaai', trans: 'पूजा को ही मूल मानो (Worship is the foundation)' },
@@ -153,6 +175,7 @@ const TRACK_LIBRARY = [
     album: 'Tamil Love Synthwave',
     artwork: 'https://images.unsplash.com/photo-1445039076565-d26e75ad52da?auto=format&fit=crop&w=400&q=80',
     duration: 205,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
     aiText: 'Retro synthwave meets Tamil romantic poetry with 80s nostalgia and modern production at 95 BPM.',
     lyrics: [
       { text: 'Kadhal poovinile manjolai', trans: 'प्रेम के फूल में मधु है (Love\'s flower holds nectar)' },
@@ -167,6 +190,7 @@ const TRACK_LIBRARY = [
     album: 'Rivers of Tamil Nadu',
     artwork: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=400&q=80',
     duration: 220,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
     aiText: 'Celebrates the sacred Kaveri river with traditional Tamil folk rhythms and contemporary tabla patterns.',
     lyrics: [
       { text: 'Kaveri mulla valam thazha', trans: 'कावेरी नदी की घाटी (Kaveri river valley flows)' },
@@ -181,6 +205,7 @@ const TRACK_LIBRARY = [
     album: 'Winter Rains of Tamil Land',
     artwork: 'https://images.unsplash.com/photo-1487415380519-e21cc028cb29?auto=format&fit=crop&w=400&q=80',
     duration: 185,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     aiText: 'Celebrate the Tamil harvest month of Margazhi with raindrop percussion and 70 BPM meditative flows.',
     lyrics: [
       { text: 'Margazhi mazhai vandhu sollum', trans: 'मार्गशीर्ष की बारिश आती है (December rains arrive)' },
@@ -195,6 +220,7 @@ const TRACK_LIBRARY = [
     album: 'Modern Tamil Pride',
     artwork: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80',
     duration: 198,
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     aiText: 'Uplifting Tamil anthem about unity and pride, blending traditional instruments with trap beats at 130 BPM.',
     lyrics: [
       { text: 'Oruvan oruvan naama vaalkai', trans: 'एक-एक करके हम जीवन जीते हैं (Together we live stronger)' },
@@ -683,6 +709,13 @@ function setupAudioPlayer() {
     const percent = (e.clientX - rect.left) / rect.width;
     const track = TRACK_LIBRARY[appState.currentTrackIndex];
     appState.currentTime = Math.floor(percent * track.duration);
+    
+    // Sync audio element's playback position
+    const audioPlayer = document.getElementById('audio-player');
+    if (audioPlayer && audioPlayer.src) {
+      audioPlayer.currentTime = appState.currentTime;
+    }
+    
     updatePlayerUI();
   });
 
@@ -735,6 +768,12 @@ function loadTrack(idx) {
   document.getElementById('ep-artwork').src = track.artwork;
   document.getElementById('ep-ai-explanation').innerText = track.aiText;
 
+  // Load audio file
+  const audioPlayer = document.getElementById('audio-player');
+  audioPlayer.src = track.audioUrl || '';
+  audioPlayer.load();
+  audioPlayer.currentTime = 0;
+
   // Build lyrics Sync layout
   const lyricsContainer = document.getElementById('ep-lyrics-scroll-container');
   lyricsContainer.innerHTML = '';
@@ -761,27 +800,40 @@ function startPlayback() {
   // Unpause active audio bars animations
   document.querySelectorAll('.mini-eq-bar').forEach(b => b.classList.remove('paused'));
 
-  // Start ticker interval
+  // Play actual audio
+  const audioPlayer = document.getElementById('audio-player');
+  if (audioPlayer.src) {
+    audioPlayer.play().catch(err => console.log('[v0] Audio playback error:', err));
+  }
+
+  // Start ticker interval for UI sync
   clearInterval(appState.playbackInterval);
   appState.playbackInterval = setInterval(() => {
-    const track = TRACK_LIBRARY[appState.currentTrackIndex];
-    if (appState.currentTime < track.duration) {
-      appState.currentTime++;
+    const audioPlayer = document.getElementById('audio-player');
+    if (audioPlayer && audioPlayer.src) {
+      // Use actual audio element's current time
+      appState.currentTime = Math.floor(audioPlayer.currentTime);
       updatePlayerUI();
       
-      // Update lyrics sync highlighters based on duration fraction
-      const step = Math.floor((appState.currentTime / track.duration) * track.lyrics.length);
-      document.querySelectorAll('.lyric-line').forEach((line, lIdx) => {
-        if (lIdx === step) {
-          line.classList.add('active');
-        } else {
-          line.classList.remove('active');
-        }
-      });
-    } else {
-      nextTrack();
+      // Update lyrics sync highlighters
+      const track = TRACK_LIBRARY[appState.currentTrackIndex];
+      if (track && track.lyrics) {
+        const step = Math.floor((appState.currentTime / track.duration) * track.lyrics.length);
+        document.querySelectorAll('.lyric-line').forEach((line, lIdx) => {
+          if (lIdx === step) {
+            line.classList.add('active');
+          } else {
+            line.classList.remove('active');
+          }
+        });
+      }
+      
+      // Auto-advance to next track when current ends
+      if (appState.currentTime >= track.duration) {
+        nextTrack();
+      }
     }
-  }, 1000);
+  }, 500);
 }
 
 function pausePlayback() {
@@ -792,6 +844,13 @@ function pausePlayback() {
   
   // Pause audio bars
   document.querySelectorAll('.mini-eq-bar').forEach(b => b.classList.add('paused'));
+  
+  // Pause actual audio
+  const audioPlayer = document.getElementById('audio-player');
+  if (audioPlayer) {
+    audioPlayer.pause();
+  }
+  
   clearInterval(appState.playbackInterval);
 }
 
